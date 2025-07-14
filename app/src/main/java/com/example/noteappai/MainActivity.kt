@@ -12,7 +12,9 @@ import com.example.noteappai.presentation.Screen.NotesListScreen
 import com.example.noteappai.presentation.navigation.NoteAppState
 import com.example.noteappai.presentation.navigation.Screen
 import com.example.noteappai.ui.theme.NoteAppAiTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +36,8 @@ fun NoteApp() {
             NotesListScreen(
                 notes = appState.notes,
                 onAddNote = { appState.navigateTo(Screen.AddNote) },
-                onNoteClick = { note -> appState.navigateTo(Screen.NoteDetail(note)) }
+                onNoteClick = {
+                    note -> appState.navigateTo(Screen.NoteDetail(note)) }
             )
         }
         is Screen.AddNote -> {

@@ -13,7 +13,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.noteappai.data.local.Note
+import com.example.noteappai.domain.model.Note
 import java.time.format.DateTimeFormatter
 
 @Composable

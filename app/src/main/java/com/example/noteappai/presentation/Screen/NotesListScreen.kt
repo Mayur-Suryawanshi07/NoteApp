@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.noteappai.data.local.Note
+import com.example.noteappai.domain.model.Note
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

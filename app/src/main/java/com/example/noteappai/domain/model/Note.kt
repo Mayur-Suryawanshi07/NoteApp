@@ -4,7 +4,7 @@ import androidx.compose.ui.graphics.Color
 import java.time.LocalDateTime
 import java.util.UUID
 
-data class Note (
+data class Note(
     val id: String = UUID.randomUUID().toString(),
     val title: String,
     val content: String,

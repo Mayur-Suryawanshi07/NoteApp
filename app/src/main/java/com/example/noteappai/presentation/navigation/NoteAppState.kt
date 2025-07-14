@@ -4,7 +4,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import com.example.noteappai.presentation.utils.ColorPalette
-import com.example.noteappai.data.local.Note
+import com.example.noteappai.domain.model.Note
 
 sealed class Screen {
     object NotesList : Screen()
