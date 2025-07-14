@@ -2,6 +2,8 @@ package com.example.noteappai.di
 
 import android.app.Application
 import androidx.room.Room
+import com.example.noteappai.data.repository.NoteRepositoryImpl
+import com.example.noteappai.domain.repository.NoteRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,5 +24,10 @@ object AppModule {
         ).build()
     }
 
+    @Provides
+    @Singleton
+    fun provideNoteRepository(db: NoteDatabase): NoteRepository {
+        return NoteRepositoryImpl(db.getNoteDao())
+    }
 
 }
