@@ -1,12 +1,10 @@
-package com.example.noteappai.di
+package com.example.noteappai.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.noteappai.data.local.noteDao
-
 
 @Database(
-    entities = [],
+    entities = [NoteDto::class],
     version = 1,
     exportSchema = false
 )

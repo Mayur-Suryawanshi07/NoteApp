@@ -17,12 +17,3 @@ data class NoteDto (
     val timestamp: LocalDateTime = LocalDateTime.now()
 )
 
-//fun NoteDto.toNote(): Note {
-//    return Note(
-//        id = id,
-//        title = title,
-//        content = content,
-//        color = color,
-//        timestamp = timestamp
-//    )
-//}
