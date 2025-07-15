@@ -3,6 +3,7 @@ package com.example.noteappai.di
 import android.app.Application
 import androidx.room.Room
 import com.example.noteappai.data.local.NoteDatabase
+import com.example.noteappai.data.local.noteDao
 import com.example.noteappai.data.repository.NoteRepositoryImpl
 import com.example.noteappai.domain.repository.NoteRepository
 import com.example.noteappai.domain.use_cases.DeleteNoteUseCAse
@@ -33,6 +34,13 @@ object AppModule {
 
     @Provides
     @Singleton
+    fun provideDao(noteDatabase: NoteDatabase): noteDao {
+        return noteDatabase.getNoteDao()
+    }
+
+
+    @Provides
+    @Singleton
     fun provideNoteRepository(db: NoteDatabase): NoteRepository {
         return NoteRepositoryImpl(db.getNoteDao())
     }
@@ -49,3 +57,4 @@ object AppModule {
     }
 
 }
+//all the singleton implementation is happen here

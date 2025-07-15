@@ -1,4 +1,4 @@
-package com.example.noteappai.presentation.Screen
+package com.example.noteappai.presentation.Screen.NoteScreen
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells

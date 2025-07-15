@@ -1,8 +1,9 @@
 package com.example.noteappai.domain.use_cases
 
 import com.example.noteappai.domain.repository.NoteRepository
+import javax.inject.Inject
 
-class GetNoteIdUseCase(
+class GetNoteIdUseCase @Inject constructor(
     private val repository: NoteRepository
 ) {
 

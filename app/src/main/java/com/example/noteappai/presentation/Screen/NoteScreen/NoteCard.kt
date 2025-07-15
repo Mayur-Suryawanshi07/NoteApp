@@ -1,4 +1,4 @@
-package com.example.noteappai.presentation.Screen
+package com.example.noteappai.presentation.Screen.NoteScreen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

@@ -1,4 +1,4 @@
-package com.example.noteappai.presentation.Screen
+package com.example.noteappai.presentation.Screen.EditScreen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border

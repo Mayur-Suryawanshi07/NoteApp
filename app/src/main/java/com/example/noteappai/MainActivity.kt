@@ -6,9 +6,9 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import com.example.noteappai.presentation.Screen.AddNoteScreen
-import com.example.noteappai.presentation.Screen.NoteDetailScreen
-import com.example.noteappai.presentation.Screen.NotesListScreen
+import com.example.noteappai.presentation.Screen.EditScreen.AddNoteScreen
+import com.example.noteappai.presentation.Screen.EditScreen.NoteDetailScreen
+import com.example.noteappai.presentation.Screen.NoteScreen.NotesListScreen
 import com.example.noteappai.presentation.navigation.NoteAppState
 import com.example.noteappai.presentation.navigation.Screen
 import com.example.noteappai.ui.theme.NoteAppAiTheme
