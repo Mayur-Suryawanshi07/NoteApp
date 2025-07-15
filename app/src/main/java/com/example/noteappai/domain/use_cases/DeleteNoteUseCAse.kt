@@ -1,15 +1,15 @@
 package com.example.noteappai.domain.use_cases
 
 import com.example.noteappai.data.local.NoteDto
+import com.example.noteappai.domain.model.Note
 import com.example.noteappai.domain.repository.NoteRepository
-import kotlinx.coroutines.flow.Flow
 
-class GetNoteUseCase(
+class DeleteNoteUseCAse(
     private val repository: NoteRepository
 ) {
 
-    operator fun invoke() : Flow<List<NoteDto>>{
-        return repository.getNotes()
-
+    suspend operator fun invoke(note: NoteDto){
+        repository.deleteNote(note)
     }
+
 }
