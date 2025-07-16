@@ -11,17 +11,26 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.noteappai.domain.model.Note
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NotesListScreen(
+    viewModel: NoteScreenViewModel,
     notes: List<Note>,
     onAddNote: () -> Unit,
     onNoteClick: (Note) -> Unit
 ) {
+    val viewModel: NoteScreenViewModel = hiltViewModel()
+    val noteState by viewModel.notesState.collectAsState()
+
+
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -77,15 +86,24 @@ fun NotesListScreen(
                 contentPadding = PaddingValues(16.dp),
                 modifier = Modifier.padding(padding),
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+
             ) {
                 items(notes) { note ->
-                    NoteCard(
-                        note = note,
-                        onClick = { onNoteClick(note) }
-                    )
+                    noteState.notes.let {
+                        NoteCard(note, {})
+                    }
                 }
             }
         }
     }
-} 
+}
+
+@Preview(showSystemUi = true,showBackground = true)
+@Composable
+private fun prev2() {
+
+    val viewmodel: NoteScreenViewModel = hiltViewModel()
+
+    NotesListScreen(viewmodel, listOf(), {}, {})
+}

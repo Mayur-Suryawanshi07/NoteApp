@@ -11,9 +11,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.noteappai.domain.model.Note
+import com.example.noteappai.presentation.utils.ColorPalette
 import java.time.format.DateTimeFormatter
 
 @Composable
@@ -69,4 +71,16 @@ fun NoteCard(
             }
         }
     }
-} 
+}
+
+@Preview(showSystemUi = true, showBackground = true)
+@Composable
+private fun Preview1() {
+//    val note = listOf<Note>(
+//        Note("1","Study","Tomorrow I have to study", ColorPalette.getRandomColor()),
+//        Note("1","Study","Tomorrow I have to study", ColorPalette.getRandomColor())
+//    )
+    val note = Note("1","Study","Tomorrow I have to study", ColorPalette.getRandomColor())
+
+    NoteCard(note,{})
+}

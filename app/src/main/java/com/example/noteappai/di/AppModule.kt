@@ -3,7 +3,7 @@ package com.example.noteappai.di
 import android.app.Application
 import androidx.room.Room
 import com.example.noteappai.data.local.NoteDatabase
-import com.example.noteappai.data.local.noteDao
+import com.example.noteappai.data.local.NoteDao
 import com.example.noteappai.data.repository.NoteRepositoryImpl
 import com.example.noteappai.domain.repository.NoteRepository
 import com.example.noteappai.domain.use_cases.DeleteNoteUseCAse
@@ -11,7 +11,6 @@ import com.example.noteappai.domain.use_cases.GetNoteIdUseCase
 import com.example.noteappai.domain.use_cases.GetNotesUseCase
 import com.example.noteappai.domain.use_cases.InsertNoteUseCase
 import com.example.noteappai.domain.use_cases.NoteUseCases
-import com.example.noteappai.presentation.navigation.Screen
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,7 +33,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideDao(noteDatabase: NoteDatabase): noteDao {
+    fun provideDao(noteDatabase: NoteDatabase): NoteDao {
         return noteDatabase.getNoteDao()
     }
 

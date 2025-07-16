@@ -1,7 +1,6 @@
 package com.example.noteappai.data.repository
 
-import com.example.noteappai.data.local.NoteDto
-import com.example.noteappai.data.local.noteDao
+import com.example.noteappai.data.local.NoteDao
 import com.example.noteappai.data.mapper.toNote
 import com.example.noteappai.data.mapper.toNoteDto
 import com.example.noteappai.domain.model.Note
@@ -10,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 class NoteRepositoryImpl(
-    private val dao: noteDao
+    private val dao: NoteDao
 ): NoteRepository {
     override fun getNotes(): Flow<List<Note>> {
         return dao.getAllNotes().map { it.map{it.toNote()}}

@@ -25,12 +25,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.noteappai.presentation.utils.ColorPalette
 import com.example.noteappai.domain.model.Note
+import com.example.noteappai.presentation.Screen.NoteScreen.NoteScreenViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddNoteScreen(
     onBackPressed: () -> Unit,
-    onNoteSaved: (Note) -> Unit
+    onNoteSaved: (Note) -> Unit,
+    viewModel: NoteScreenViewModel,
 ) {
     var title by remember { mutableStateOf("") }
     var content by remember { mutableStateOf("") }
