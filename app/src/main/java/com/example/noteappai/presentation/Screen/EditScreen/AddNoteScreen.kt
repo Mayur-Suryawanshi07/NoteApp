@@ -13,6 +13,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.*
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -26,19 +27,22 @@ import androidx.compose.ui.unit.sp
 import com.example.noteappai.presentation.utils.ColorPalette
 import com.example.noteappai.domain.model.Note
 import com.example.noteappai.presentation.Screen.NoteScreen.NoteScreenViewModel
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddNoteScreen(
+    note:Note,
     onBackPressed: () -> Unit,
     onNoteSaved: (Note) -> Unit,
-    viewModel: NoteScreenViewModel,
 ) {
     var title by remember { mutableStateOf("") }
     var content by remember { mutableStateOf("") }
-    var selectedColor by remember { mutableStateOf(ColorPalette.getRandomColor()) }
+    var selectedColor by remember { mutableStateOf(note.color) }
     val titleFocusRequester = remember { FocusRequester() }
     val contentFocusRequester = remember { FocusRequester() }
+    val snackbarHostState = remember { SnackbarHostState()}
+    val coroutineScope = rememberCoroutineScope()
 
     Scaffold(
         topBar = {
@@ -52,22 +56,27 @@ fun AddNoteScreen(
                 actions = {
                     IconButton(
                         onClick = {
-                            if (title.isNotBlank()) {
-                                val note = Note(
+                            if (title.isNotBlank() && content.isNotBlank()) {
+                                val newNote = Note(
                                     title = title,
                                     content = content,
                                     color = selectedColor
                                 )
-                                onNoteSaved(note)
+                                onNoteSaved(newNote)
+                            } else {
+                                coroutineScope.launch {
+                                    snackbarHostState.showSnackbar("Note can't be empty!")
+                                }
                             }
                         },
-                        enabled = title.isNotBlank()
+                        enabled = title.isNotBlank() && content.isNotBlank()
                     ) {
                         Icon(Icons.Default.Check, contentDescription = "Save")
                     }
                 }
             )
-        }
+        },
+        snackbarHost = { SnackbarHost(snackbarHostState) }
     ) { padding ->
         Column(
             modifier = Modifier
@@ -144,7 +153,7 @@ fun AddNoteScreen(
 
             OutlinedTextField(
                 value = title,
-                onValueChange = { title = it },
+                onValueChange = { title= it },
                 textStyle = TextStyle(
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold

@@ -11,18 +11,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.noteappai.domain.model.Note
-import com.example.noteappai.presentation.utils.ColorPalette
 import java.time.format.DateTimeFormatter
 
 @Composable
 fun NoteCard(
     note: Note,
     onClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModel: NoteScreenViewModel
 ) {
     Card(
         modifier = modifier
@@ -42,15 +41,23 @@ fun NoteCard(
                 modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                // Title
-                Text(
-                    text = note.title,
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.Black,
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis
-                )
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    // Title
+                    Text(
+                        text = note.title,
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis
+                    )
+
+                }
+
                 
                 // Content
                 Text(
@@ -68,19 +75,8 @@ fun NoteCard(
                     color = Color.Black.copy(alpha = 0.6f),
                     modifier = Modifier.align(Alignment.End)
                 )
+
             }
         }
     }
-}
-
-@Preview(showSystemUi = true, showBackground = true)
-@Composable
-private fun Preview1() {
-//    val note = listOf<Note>(
-//        Note("1","Study","Tomorrow I have to study", ColorPalette.getRandomColor()),
-//        Note("1","Study","Tomorrow I have to study", ColorPalette.getRandomColor())
-//    )
-    val note = Note("1","Study","Tomorrow I have to study", ColorPalette.getRandomColor())
-
-    NoteCard(note,{})
 }

@@ -11,25 +11,20 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import com.example.noteappai.domain.model.Note
+import com.example.noteappai.presentation.navigation.Routes
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NotesListScreen(
     viewModel: NoteScreenViewModel,
     notes: List<Note>,
-    onAddNote: () -> Unit,
-    onNoteClick: (Note) -> Unit
+    navController: NavHostController
 ) {
-    val viewModel: NoteScreenViewModel = hiltViewModel()
     val noteState by viewModel.notesState.collectAsState()
-
-
 
     Scaffold(
         topBar = {
@@ -45,7 +40,9 @@ fun NotesListScreen(
         },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = onAddNote,
+                onClick = {
+                    navController.navigate(Routes.EditNoteScreen.route)
+                },
                 containerColor = MaterialTheme.colorScheme.primary
             ) {
                 Icon(
@@ -88,22 +85,19 @@ fun NotesListScreen(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
 
-            ) {
-                items(notes) { note ->
+                ) {
+                items(noteState.notes) { note ->
                     noteState.notes.let {
-                        NoteCard(note, {})
+                        NoteCard(
+                            note = note,
+                            onClick = {
+
+                            },
+                            viewModel = viewModel
+                        )
                     }
                 }
             }
         }
     }
-}
-
-@Preview(showSystemUi = true,showBackground = true)
-@Composable
-private fun prev2() {
-
-    val viewmodel: NoteScreenViewModel = hiltViewModel()
-
-    NotesListScreen(viewmodel, listOf(), {}, {})
 }
