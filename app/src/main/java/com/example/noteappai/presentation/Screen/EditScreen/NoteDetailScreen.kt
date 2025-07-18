@@ -119,7 +119,7 @@ fun NoteDetailScreen(
                             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
                         )
                         Text(
-                            text = note.id.take(8),
+                            text = "",
                             fontFamily = FontFamily.Monospace
                         )
                     }

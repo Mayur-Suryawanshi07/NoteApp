@@ -4,9 +4,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.noteappai.domain.model.Note
 import com.example.noteappai.presentation.Screen.EditScreen.AddNoteScreen
 import com.example.noteappai.presentation.Screen.NoteScreen.NoteScreenViewModel
@@ -25,9 +27,17 @@ fun NoteApp(modifier: Modifier = Modifier,viewModel: NoteScreenViewModel) {
             NotesListScreen(viewModel = viewModel, navController = navController,notes = state.notes)
 
         }
-        composable(route = Routes.EditNoteScreen.route) {
+        composable(route = Routes.EditNoteScreen.route,
+            arguments = listOf(navArgument("noteId") {
+                type = NavType.IntType
+            })) {
+            val noteId = it.arguments?.getInt("noteId")
+
+            val note = state.notes.find { it.id == noteId }
+                ?: Note(id = null, title = "", content = "", color = ColorPalette.colors[0])
+
             AddNoteScreen(
-                note = Note(title = "", content = "", color = ColorPalette.colors[0]),
+                note = note,
                 onBackPressed = { navController.popBackStack() },
                 onNoteSaved = { note ->
                     viewModel.addNote(note)

@@ -41,7 +41,7 @@ fun NotesListScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    navController.navigate(Routes.EditNoteScreen.route)
+                    navController.navigate(Routes.EditNoteScreen.passArg(0))
                 },
                 containerColor = MaterialTheme.colorScheme.primary
             ) {
@@ -82,8 +82,8 @@ fun NotesListScreen(
                 columns = GridCells.Adaptive(minSize = 160.dp),
                 contentPadding = PaddingValues(16.dp),
                 modifier = Modifier.padding(padding),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
+
+
 
                 ) {
                 items(noteState.notes) { note ->
@@ -91,7 +91,7 @@ fun NotesListScreen(
                         NoteCard(
                             note = note,
                             onClick = {
-
+                                navController.navigate(Routes.EditNoteScreen.passArg(note.id?:0))
                             },
                             viewModel = viewModel
                         )

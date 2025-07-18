@@ -26,13 +26,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.noteappai.presentation.utils.ColorPalette
 import com.example.noteappai.domain.model.Note
-import com.example.noteappai.presentation.Screen.NoteScreen.NoteScreenViewModel
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddNoteScreen(
-    note:Note,
+    note: Note,
     onBackPressed: () -> Unit,
     onNoteSaved: (Note) -> Unit,
 ) {
@@ -41,7 +40,7 @@ fun AddNoteScreen(
     var selectedColor by remember { mutableStateOf(note.color) }
     val titleFocusRequester = remember { FocusRequester() }
     val contentFocusRequester = remember { FocusRequester() }
-    val snackbarHostState = remember { SnackbarHostState()}
+    val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
 
     Scaffold(
@@ -58,6 +57,7 @@ fun AddNoteScreen(
                         onClick = {
                             if (title.isNotBlank() && content.isNotBlank()) {
                                 val newNote = Note(
+                                    id = note.id,
                                     title = title,
                                     content = content,
                                     color = selectedColor
@@ -92,7 +92,7 @@ fun AddNoteScreen(
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Medium
             )
-            
+
             Row(
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
                 modifier = Modifier.horizontalScroll(rememberScrollState())
@@ -112,7 +112,7 @@ fun AddNoteScreen(
                     )
                 }
             }
-            
+
             // Note Preview
             Card(
                 modifier = Modifier.fillMaxWidth(),
@@ -122,6 +122,7 @@ fun AddNoteScreen(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
+                        .height(110.dp)
                         .background(selectedColor)
                         .padding(16.dp)
                 ) {
@@ -134,16 +135,18 @@ fun AddNoteScreen(
                             fontWeight = FontWeight.Bold,
                             color = if (title.isBlank()) Color.Black.copy(alpha = 0.5f) else Color.Black
                         )
-                        
+
                         Text(
                             text = if (content.isNotBlank()) content else "Note content...",
                             fontSize = 14.sp,
-                            color = if (content.isBlank()) Color.Black.copy(alpha = 0.5f) else Color.Black.copy(alpha = 0.8f)
+                            color = if (content.isBlank()) Color.Black.copy(alpha = 0.5f) else Color.Black.copy(
+                                alpha = 0.8f
+                            )
                         )
                     }
                 }
             }
-            
+
             // Title Input
             Text(
                 text = "Title",
@@ -153,7 +156,11 @@ fun AddNoteScreen(
 
             OutlinedTextField(
                 value = title,
-                onValueChange = { title= it },
+                onValueChange = {
+                    if (it.length <= 20) {
+                        title = it
+                    }
+                },
                 textStyle = TextStyle(
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold
@@ -166,9 +173,10 @@ fun AddNoteScreen(
                         text = "Enter note title...",
                         color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
                     )
-                }
+                },
+                maxLines = 1,
             )
-            
+
             // Content Input
             Text(
                 text = "Content",
@@ -180,7 +188,7 @@ fun AddNoteScreen(
                 value = content,
                 onValueChange = { content = it },
                 textStyle = TextStyle(
-                    fontSize = 14.sp
+                    fontSize = 16.sp
                 ),
                 modifier = Modifier
                     .fillMaxWidth()
@@ -195,8 +203,9 @@ fun AddNoteScreen(
             )
         }
     }
-    
+
     LaunchedEffect(Unit) {
         titleFocusRequester.requestFocus()
     }
+    //Hey Compose, as soon as this screen appears, I want the cursor to blink inside the title input box, so the user can start typing right away."
 } 

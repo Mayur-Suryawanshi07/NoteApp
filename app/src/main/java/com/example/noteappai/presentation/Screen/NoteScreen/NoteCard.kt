@@ -1,9 +1,14 @@
 package com.example.noteappai.presentation.Screen.NoteScreen
 
+import android.widget.ImageButton
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -53,21 +58,36 @@ fun NoteCard(
                         fontWeight = FontWeight.Bold,
                         color = Color.Black,
                         maxLines = 2,
-                        overflow = TextOverflow.Ellipsis
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.weight(1f)
                     )
+
+                    Spacer(modifier = Modifier.width(8.dp))
+
+                    IconButton(
+                        onClick = {
+                            viewModel.deleteNote(note)
+                        }
+                    ) {
+                        Image(
+                            modifier = Modifier.size(18.dp),
+                            imageVector = Icons.Filled.Delete,
+                            contentDescription = "Delete"
+                        )
+                    }
 
                 }
 
-                
+
                 // Content
                 Text(
                     text = note.content,
                     fontSize = 14.sp,
                     color = Color.Black.copy(alpha = 0.8f),
-                    maxLines = 3,
+                    maxLines = 5,
                     overflow = TextOverflow.Ellipsis
                 )
-                
+
                 // Timestamp
                 Text(
                     text = note.timestamp.format(DateTimeFormatter.ofPattern("MMM dd, HH:mm")),
