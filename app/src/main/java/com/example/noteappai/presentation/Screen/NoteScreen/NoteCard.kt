@@ -25,8 +25,8 @@ import java.time.format.DateTimeFormatter
 fun NoteCard(
     note: Note,
     onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-    viewModel: NoteScreenViewModel
+    onDelete: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Card(
         modifier = modifier
@@ -65,9 +65,7 @@ fun NoteCard(
                     Spacer(modifier = Modifier.width(8.dp))
 
                     IconButton(
-                        onClick = {
-                            viewModel.deleteNote(note)
-                        }
+                        onClick = onDelete
                     ) {
                         Image(
                             modifier = Modifier.size(18.dp),

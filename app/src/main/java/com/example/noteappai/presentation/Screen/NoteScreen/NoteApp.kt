@@ -1,14 +1,12 @@
-package com.example.noteappai.presentation.Screen.NoteScreen
-
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.remember
-import com.example.noteappai.domain.model.Note
-import com.example.noteappai.presentation.Screen.EditScreen.AddNoteScreen
-import com.example.noteappai.presentation.Screen.EditScreen.NoteDetailScreen
-//import com.example.noteappai.presentation.navigation.NoteAppState
-//import com.example.noteappai.presentation.navigation.Screen
-
+//package com.example.noteappai.presentation.Screen.NoteScreen
+//
+//import androidx.compose.runtime.Composable
+//import androidx.compose.runtime.collectAsState
+//import androidx.compose.runtime.remember
+//import com.example.noteappai.domain.model.Note
+//import com.example.noteappai.presentation.Screen.EditScreen.AddNoteScreen
+//import com.example.noteappai.presentation.Screen.EditScreen.NoteDetailScreen
+//
 //@Composable
 //fun NoteApp(viewModel: NoteScreenViewModel,note: Note) {
 //    val appState = remember { NoteAppState() }

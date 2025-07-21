@@ -13,19 +13,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
 import com.example.noteappai.domain.model.Note
-import com.example.noteappai.presentation.navigation.Routes
+import com.example.noteappai.presentation.Screen.NoteScreen.NoteCard
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NotesListScreen(
-    viewModel: NoteScreenViewModel,
     notes: List<Note>,
-    navController: NavHostController
+    onAddNote: () -> Unit,
+    onEditNote: (Int) -> Unit,
+    onDeleteNote: (Note) -> Unit
 ) {
-    val noteState by viewModel.notesState.collectAsState()
-
     Scaffold(
         topBar = {
             TopAppBar(
@@ -40,9 +38,7 @@ fun NotesListScreen(
         },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = {
-                    navController.navigate(Routes.EditNoteScreen.passArg(0))
-                },
+                onClick = onAddNote,
                 containerColor = MaterialTheme.colorScheme.primary
             ) {
                 Icon(
@@ -82,20 +78,13 @@ fun NotesListScreen(
                 columns = GridCells.Adaptive(minSize = 160.dp),
                 contentPadding = PaddingValues(16.dp),
                 modifier = Modifier.padding(padding),
-
-
-
-                ) {
-                items(noteState.notes) { note ->
-                    noteState.notes.let {
-                        NoteCard(
-                            note = note,
-                            onClick = {
-                                navController.navigate(Routes.EditNoteScreen.passArg(note.id?:0))
-                            },
-                            viewModel = viewModel
-                        )
-                    }
+            ) {
+                items(notes) { note ->
+                    NoteCard(
+                        note = note,
+                        onClick = { onEditNote(note.id ?: -1) },
+                        onDelete = { onDeleteNote(note) }
+                    )
                 }
             }
         }

@@ -7,7 +7,7 @@ import java.time.LocalDateTime
 
 @Entity(tableName = "notes")
 data class NoteDto (
-    @PrimaryKey(autoGenerate = false)
+    @PrimaryKey(autoGenerate = true)
     val id: Int?=null,
 
     val title: String,

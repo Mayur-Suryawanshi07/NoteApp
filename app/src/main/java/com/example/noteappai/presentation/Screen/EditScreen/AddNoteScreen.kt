@@ -12,6 +12,8 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.*
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.*
@@ -27,6 +29,11 @@ import androidx.compose.ui.unit.sp
 import com.example.noteappai.presentation.utils.ColorPalette
 import com.example.noteappai.domain.model.Note
 import kotlinx.coroutines.launch
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
+import com.example.noteappai.presentation.Screen.EditScreen.EditScreenViewModel
+import com.example.noteappai.presentation.Screen.EditScreen.EditScreenUiState
+import com.example.noteappai.presentation.navigation.Routes
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -34,9 +41,10 @@ fun AddNoteScreen(
     note: Note,
     onBackPressed: () -> Unit,
     onNoteSaved: (Note) -> Unit,
+    navigation : NavHostController
 ) {
-    var title by remember { mutableStateOf("") }
-    var content by remember { mutableStateOf("") }
+    var title by remember { mutableStateOf(note.title) }
+    var content by remember { mutableStateOf(note.content) }
     var selectedColor by remember { mutableStateOf(note.color) }
     val titleFocusRequester = remember { FocusRequester() }
     val contentFocusRequester = remember { FocusRequester() }
@@ -53,6 +61,14 @@ fun AddNoteScreen(
                     }
                 },
                 actions = {
+                    IconButton(
+                        onClick = {
+                            navigation.navigate(Routes.NoteDetailScreen.passArgDetail(note.id?:-1))
+                        },
+
+                        ) {
+                        Icon(Icons.Outlined.Info,contentDescription = "Info")
+                    }
                     IconButton(
                         onClick = {
                             if (title.isNotBlank() && content.isNotBlank()) {
@@ -73,6 +89,7 @@ fun AddNoteScreen(
                     ) {
                         Icon(Icons.Default.Check, contentDescription = "Save")
                     }
+
                 }
             )
         },
@@ -207,5 +224,4 @@ fun AddNoteScreen(
     LaunchedEffect(Unit) {
         titleFocusRequester.requestFocus()
     }
-    //Hey Compose, as soon as this screen appears, I want the cursor to blink inside the title input box, so the user can start typing right away."
 } 

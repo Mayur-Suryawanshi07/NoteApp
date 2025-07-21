@@ -8,6 +8,9 @@ sealed class Routes(val route: String) {
             return "edit_note_screen/$noteId"
         }
     }
-
-
+    object NoteDetailScreen:Routes("note_detail_screen/{noteId}"){
+        fun passArgDetail(noteId: Int): String {
+            return "note_detail_screen/$noteId"
+        }
+    }
 }

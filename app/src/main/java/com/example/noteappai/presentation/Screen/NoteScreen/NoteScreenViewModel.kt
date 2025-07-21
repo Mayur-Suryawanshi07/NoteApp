@@ -39,12 +39,6 @@ class NoteScreenViewModel @Inject constructor(
         }
     }
 
-    fun getNoteById(Id: Int) {
-        viewModelScope.launch {
-            noteUseCases.GetNoteId.invoke(Id)
-        }
-    }
-
 
     fun addNote(note: Note) {
         viewModelScope.launch {
