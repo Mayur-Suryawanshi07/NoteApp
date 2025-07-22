@@ -5,7 +5,7 @@ import com.example.noteappai.presentation.utils.ColorPalette
 import java.time.LocalDateTime
 
 data class NotesDetailState(
-    val id: Int? =null,
+    val noteId: Int? =null,
     val title: String="",
     val content: String="",
     val color: Color= ColorPalette.getRandomColor(),

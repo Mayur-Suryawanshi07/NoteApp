@@ -50,7 +50,6 @@ fun AddNoteScreen(
     val titleFocusRequester = remember { FocusRequester() }
     val contentFocusRequester = remember { FocusRequester() }
     val snackbarHostState = remember { SnackbarHostState() }
-    val coroutineScope = rememberCoroutineScope()
 
     Scaffold(
         topBar = {
@@ -64,7 +63,7 @@ fun AddNoteScreen(
                 actions = {
                     IconButton(
                         onClick = {
-
+                            navigation.navigate(Routes.NoteDetailScreen.passArgDetail(state.noteId?:-1))
                         },
 
                         ) {

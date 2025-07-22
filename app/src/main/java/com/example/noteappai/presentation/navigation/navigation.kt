@@ -11,6 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.noteappai.domain.model.Note
 import com.example.noteappai.presentation.Screen.EditScreen.AddNoteScreen
+import com.example.noteappai.presentation.Screen.NoteDetailScreen.NoteDetailScreen
 import com.example.noteappai.presentation.Screen.NoteScreen.NoteScreenViewModel
 import com.example.noteappai.presentation.Screen.NoteScreen.NotesListScreen
 import com.example.noteappai.presentation.utils.ColorPalette
@@ -53,7 +54,15 @@ fun NoteApp(modifier: Modifier = Modifier, viewModel: NoteScreenViewModel) {
             )
         }
 
+        composable(route = Routes.NoteDetailScreen.route,
+            arguments = listOf(
+                navArgument("noteId"){
+                    type = NavType.IntType
+                    defaultValue = -1
+                }
+            )
+            ){
+            NoteDetailScreen(onBackPressed = { navController.popBackStack() })
+        }
     }
-
-
 }
