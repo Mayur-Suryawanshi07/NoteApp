@@ -11,6 +11,7 @@ import com.example.noteappai.domain.use_cases.GetNoteIdUseCase
 import com.example.noteappai.domain.use_cases.GetNotesUseCase
 import com.example.noteappai.domain.use_cases.InsertNoteUseCase
 import com.example.noteappai.domain.use_cases.NoteUseCases
+import com.example.noteappai.domain.use_cases.UpdateNoteUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -53,7 +54,8 @@ object AppModule {
             GetNotes = GetNotesUseCase(repository),
             GetNoteId =  GetNoteIdUseCase(repository),
             AddNote = InsertNoteUseCase(repository),
-            DeleteNote = DeleteNoteUseCAse(repository)
+            DeleteNote = DeleteNoteUseCAse(repository),
+            UpdateNote = UpdateNoteUseCase(repository)
         )
     }
 

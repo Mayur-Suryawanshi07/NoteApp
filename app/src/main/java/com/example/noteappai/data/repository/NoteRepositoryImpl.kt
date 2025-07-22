@@ -27,5 +27,10 @@ class NoteRepositoryImpl(
         return dao.deleteNoteById(note.toNoteDto())
     }
 
+    override suspend fun updateNote(note: Note) {
+        return dao.updateNote(note.toNoteDto())
+    }
+
+
 
 }

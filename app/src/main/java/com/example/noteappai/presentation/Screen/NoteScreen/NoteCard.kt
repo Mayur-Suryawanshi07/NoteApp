@@ -31,7 +31,9 @@ fun NoteCard(
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .clickable { onClick() }
+            .clickable {
+                onClick()
+            }
             .padding(8.dp),
         shape = RoundedCornerShape(16.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)

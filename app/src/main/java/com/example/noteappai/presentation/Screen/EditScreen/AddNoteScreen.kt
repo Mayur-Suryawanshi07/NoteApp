@@ -30,6 +30,7 @@ import com.example.noteappai.presentation.utils.ColorPalette
 import com.example.noteappai.domain.model.Note
 import kotlinx.coroutines.launch
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.noteappai.presentation.Screen.EditScreen.EditScreenViewModel
 import com.example.noteappai.presentation.Screen.EditScreen.EditScreenUiState
@@ -38,14 +39,14 @@ import com.example.noteappai.presentation.navigation.Routes
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddNoteScreen(
-    note: Note,
+    noteID: Int,
     onBackPressed: () -> Unit,
-    onNoteSaved: (Note) -> Unit,
-    navigation : NavHostController
+    navigation : NavHostController,
+    edtViewModel: EditScreenViewModel =hiltViewModel()
 ) {
-    var title by remember { mutableStateOf(note.title) }
-    var content by remember { mutableStateOf(note.content) }
-    var selectedColor by remember { mutableStateOf(note.color) }
+
+    val state by edtViewModel.uiState.collectAsState()
+
     val titleFocusRequester = remember { FocusRequester() }
     val contentFocusRequester = remember { FocusRequester() }
     val snackbarHostState = remember { SnackbarHostState() }
@@ -63,7 +64,7 @@ fun AddNoteScreen(
                 actions = {
                     IconButton(
                         onClick = {
-                            navigation.navigate(Routes.NoteDetailScreen.passArgDetail(note.id?:-1))
+
                         },
 
                         ) {
@@ -71,21 +72,9 @@ fun AddNoteScreen(
                     }
                     IconButton(
                         onClick = {
-                            if (title.isNotBlank() && content.isNotBlank()) {
-                                val newNote = Note(
-                                    id = note.id,
-                                    title = title,
-                                    content = content,
-                                    color = selectedColor
-                                )
-                                onNoteSaved(newNote)
-                            } else {
-                                coroutineScope.launch {
-                                    snackbarHostState.showSnackbar("Note can't be empty!")
-                                }
-                            }
+                           edtViewModel.saveNote()
                         },
-                        enabled = title.isNotBlank() && content.isNotBlank()
+                        enabled = state.title.isNotBlank() && state.content.isNotBlank()
                     ) {
                         Icon(Icons.Default.Check, contentDescription = "Save")
                     }
@@ -121,11 +110,13 @@ fun AddNoteScreen(
                             .clip(CircleShape)
                             .background(color)
                             .border(
-                                width = if (selectedColor == color) 3.dp else 1.dp,
-                                color = if (selectedColor == color) Color.Black else Color.Gray,
+                                width = if (state.color == color) 3.dp else 1.dp,
+                                color = if (state.color == color) Color.Black else Color.Gray,
                                 shape = CircleShape
                             )
-                            .clickable { selectedColor = color }
+                            .clickable {
+                                edtViewModel.onColorChange(color)
+                            }
                     )
                 }
             }
@@ -140,23 +131,23 @@ fun AddNoteScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(110.dp)
-                        .background(selectedColor)
+                        .background(state.color)
                         .padding(16.dp)
                 ) {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         Text(
-                            text = if (title.isNotBlank()) title else "Note Title",
+                            text = if (state.title.isNotBlank()) state.title else "Note Title",
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
-                            color = if (title.isBlank()) Color.Black.copy(alpha = 0.5f) else Color.Black
+                            color = if (state.title.isBlank()) Color.Black.copy(alpha = 0.5f) else Color.Black
                         )
 
                         Text(
-                            text = if (content.isNotBlank()) content else "Note content...",
+                            text = if (state.content.isNotBlank()) state.content else "Note content...",
                             fontSize = 14.sp,
-                            color = if (content.isBlank()) Color.Black.copy(alpha = 0.5f) else Color.Black.copy(
+                            color = if (state.content.isBlank()) Color.Black.copy(alpha = 0.5f) else Color.Black.copy(
                                 alpha = 0.8f
                             )
                         )
@@ -172,11 +163,10 @@ fun AddNoteScreen(
             )
 
             OutlinedTextField(
-                value = title,
+                value = state.title,
                 onValueChange = {
-                    if (it.length <= 20) {
-                        title = it
-                    }
+                    edtViewModel.onTitleChange(it)
+
                 },
                 textStyle = TextStyle(
                     fontSize = 18.sp,
@@ -202,8 +192,10 @@ fun AddNoteScreen(
             )
 
             OutlinedTextField(
-                value = content,
-                onValueChange = { content = it },
+                value = state.content,
+                onValueChange = {
+                    edtViewModel.onContentChange(it)
+                },
                 textStyle = TextStyle(
                     fontSize = 16.sp
                 ),
@@ -224,4 +216,14 @@ fun AddNoteScreen(
     LaunchedEffect(Unit) {
         titleFocusRequester.requestFocus()
     }
-} 
+    LaunchedEffect(state.isSaved) {
+        if (state.isSaved) {
+            navigation.popBackStack() // or navigate back to list screen
+        }
+
+
+    }
+    LaunchedEffect(noteID) {
+        edtViewModel.loadNote(noteID)
+    }
+}

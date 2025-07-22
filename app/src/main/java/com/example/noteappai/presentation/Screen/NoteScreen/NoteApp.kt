@@ -5,7 +5,7 @@
 //import androidx.compose.runtime.remember
 //import com.example.noteappai.domain.model.Note
 //import com.example.noteappai.presentation.Screen.EditScreen.AddNoteScreen
-//import com.example.noteappai.presentation.Screen.EditScreen.NoteDetailScreen
+//import com.example.noteappai.presentation.Screen.NoteDetailScreen.NoteDetailScreen
 //
 //@Composable
 //fun NoteApp(viewModel: NoteScreenViewModel,note: Note) {
