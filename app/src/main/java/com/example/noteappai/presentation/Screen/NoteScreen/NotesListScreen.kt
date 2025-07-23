@@ -1,30 +1,45 @@
 package com.example.noteappai.presentation.Screen.NoteScreen
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.noteappai.domain.model.Note
-import com.example.noteappai.presentation.Screen.NoteScreen.NoteCard
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
+import com.example.noteappai.presentation.navigation.Routes
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NotesListScreen(
-    notes: List<Note>,
-    onAddNote: () -> Unit,
-    onEditNote: (Int) -> Unit,
-    onDeleteNote: (Note) -> Unit
+    navigation: NavHostController,
+    viewModel: NoteScreenViewModel = hiltViewModel(),
 ) {
-    Scaffold(
+    val state by viewModel.notesState.collectAsState()
+
+     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
@@ -38,7 +53,9 @@ fun NotesListScreen(
         },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = onAddNote,
+                onClick = {
+                   navigation.navigate(Routes.EditNoteScreen.passArg(-1))
+                },
                 containerColor = MaterialTheme.colorScheme.primary
             ) {
                 Icon(
@@ -49,7 +66,7 @@ fun NotesListScreen(
             }
         }
     ) { padding ->
-        if (notes.isEmpty()) {
+        if (state.notes.isEmpty()) {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -79,11 +96,15 @@ fun NotesListScreen(
                 contentPadding = PaddingValues(16.dp),
                 modifier = Modifier.padding(padding),
             ) {
-                items(notes) { note ->
+                items(state.notes) { note ->
                     NoteCard(
                         note = note,
-                        onClick = { onEditNote(note.id ?: -1) },
-                        onDelete = { onDeleteNote(note) }
+                        onClick = {
+                                  navigation.navigate(Routes.EditNoteScreen.passArg(note.id ?: -1))
+                                  },
+                        onDelete = {
+                            viewModel.deleteNote(note)
+                        }
                     )
                 }
             }

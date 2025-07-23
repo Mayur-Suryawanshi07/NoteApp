@@ -6,12 +6,9 @@ import com.example.noteappai.domain.model.Note
 import com.example.noteappai.domain.use_cases.NoteUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -45,6 +42,13 @@ class NoteScreenViewModel @Inject constructor(
             noteUseCases.AddNote.invoke(note)
         }
     }
+
+    fun updateNote(note: Note) {
+        viewModelScope.launch {
+            noteUseCases.UpdateNote.invoke(note)
+        }
+    }
+
     fun deleteNote(note: Note) {
         viewModelScope.launch {
             noteUseCases.DeleteNote.invoke(note)

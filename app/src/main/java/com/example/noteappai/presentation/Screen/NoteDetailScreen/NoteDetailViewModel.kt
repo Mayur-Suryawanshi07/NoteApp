@@ -31,8 +31,10 @@ class NoteDetailViewModel @Inject constructor(
     fun loadNoteById(noteId:Int){
         viewModelScope.launch {
             val note=useCases.GetNoteId(noteId)
-            _state.value=state.value.copy(noteId = note?.id)
+            _state.value=state.value.copy(note = note)
         }
     }
+
+
 
 }

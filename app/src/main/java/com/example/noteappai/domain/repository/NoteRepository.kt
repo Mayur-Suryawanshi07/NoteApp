@@ -1,6 +1,5 @@
 package com.example.noteappai.domain.repository
 
-import com.example.noteappai.data.local.NoteDto
 import com.example.noteappai.domain.model.Note
 import kotlinx.coroutines.flow.Flow
 

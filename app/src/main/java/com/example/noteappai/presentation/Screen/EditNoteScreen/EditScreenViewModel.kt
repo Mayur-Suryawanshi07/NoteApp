@@ -1,4 +1,4 @@
-package com.example.noteappai.presentation.Screen.EditScreen
+package com.example.noteappai.presentation.Screen.EditNoteScreen
 
 
 import androidx.compose.ui.graphics.Color

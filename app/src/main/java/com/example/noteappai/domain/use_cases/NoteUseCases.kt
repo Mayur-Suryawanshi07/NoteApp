@@ -7,4 +7,4 @@ data class NoteUseCases(
     val DeleteNote: DeleteNoteUseCAse,
     val UpdateNote: UpdateNoteUseCase
 )
-//All use cases are binded together
+//All use cases are bind together

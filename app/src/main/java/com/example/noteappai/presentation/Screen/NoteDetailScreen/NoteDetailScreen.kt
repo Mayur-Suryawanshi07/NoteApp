@@ -18,6 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.noteappai.presentation.utils.ColorPalette
 import java.time.format.DateTimeFormatter
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -27,6 +28,7 @@ fun NoteDetailScreen(
     onBackPressed: () -> Unit
 ) {
     val state by viewModel.state.collectAsState()
+    val note=state.note
 
     Scaffold(
         topBar = {
@@ -57,7 +59,7 @@ fun NoteDetailScreen(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(state.color)
+                        .background(note?.color?: ColorPalette.getRandomColor() )
                         .padding(24.dp)
                 ) {
                     Column(
@@ -65,7 +67,7 @@ fun NoteDetailScreen(
                     ) {
                         // Title
                         Text(
-                            text = state.title,
+                            text = note?.title?:"Note Title is Empty",
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color.Black
@@ -73,7 +75,7 @@ fun NoteDetailScreen(
 
                         // Timestamp
                         Text(
-                            text = "Created on ${state.timestamp.format(DateTimeFormatter.ofPattern("EEEE, MMMM dd, yyyy 'at' HH:mm"))}",
+                            text = "Created on ${note?.timestamp?.format(DateTimeFormatter.ofPattern("EEEE, MMMM dd, yyyy 'at' HH:mm"))}",
                             fontSize = 12.sp,
                             color = Color.Black.copy(alpha = 0.6f)
                         )
@@ -86,7 +88,7 @@ fun NoteDetailScreen(
 
                         // Content
                         Text(
-                            text = state.content,
+                            text = note?.content?:"Note is Empty",
                             fontSize = 16.sp,
                             color = Color.Black.copy(alpha = 0.8f),
                             lineHeight = 24.sp
@@ -137,7 +139,7 @@ fun NoteDetailScreen(
                             fontWeight = FontWeight.Medium,
                             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
                         )
-                        Text(text = state.content.length.toString())
+                        Text(text = note?.content?.length.toString())
                     }
 
                     Row(
@@ -149,7 +151,7 @@ fun NoteDetailScreen(
                             fontWeight = FontWeight.Medium,
                             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
                         )
-                        Text(text = state.content.split("\\s+".toRegex()).filter { it.isNotEmpty() }.size.toString())
+                        Text(text = note?.content?.split("\\s+".toRegex())?.filter { it.isNotEmpty() }?.size.toString())
                     }
                 }
             }
