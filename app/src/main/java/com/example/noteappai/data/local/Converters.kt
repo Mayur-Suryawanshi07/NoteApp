@@ -6,7 +6,7 @@ import androidx.room.TypeConverter
 import java.time.LocalDateTime
 
 class Converters {
-
+//converting type that cannot be understand by room
     @TypeConverter
     fun timeToString(time: LocalDateTime): String {
         return time.toString()
