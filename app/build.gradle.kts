@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.noteappai"
+    namespace = "com.example.notesapp"
     compileSdk = 36
 
     defaultConfig {
