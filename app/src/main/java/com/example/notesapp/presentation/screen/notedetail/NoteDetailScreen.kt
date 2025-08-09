@@ -1,4 +1,4 @@
-package com.example.notesapp.presentation.Screen.NoteDetailScreen
+package com.example.notesapp.presentation.screen.notedetail
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.example.notesapp.presentation.Screen.components.notesTopAppBar
+import com.example.notesapp.presentation.screen.components.NotesTopAppBar
 import com.example.notesapp.presentation.utils.ColorPalette
 import java.time.format.DateTimeFormatter
 
@@ -33,9 +33,9 @@ fun NoteDetailScreen(
 
     Scaffold(
         topBar = {
-            notesTopAppBar(
+            NotesTopAppBar(
                 title = "Notes",
-                subTitile = "Details of Notes",
+                subTitle = "Details of Notes",
                 showNavigationIcon = true,
                 backNavigationIcon = {
                    navigation.popBackStack()

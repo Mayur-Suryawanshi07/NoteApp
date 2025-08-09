@@ -1,4 +1,4 @@
-package com.example.notesapp.presentation.Screen.NoteScreen
+package com.example.notesapp.presentation.screen.notescreen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -15,10 +15,11 @@ import javax.inject.Inject
 @HiltViewModel
 class NoteScreenViewModel @Inject constructor(
     private val noteUseCases: NoteUseCases
-): ViewModel() {
+) : ViewModel() {
 
-    private val _notesState = MutableStateFlow(NoteState())
-    val notesState: StateFlow<NoteState> = _notesState.asStateFlow() //Read-only (can only observe the value, not change it)
+    private val _notesState = MutableStateFlow(NoteScreenUiState())
+    val notesState: StateFlow<NoteScreenUiState> =
+        _notesState.asStateFlow() //Read-only (can only observe the value, not change it)
 
     init {
         getNotes()
@@ -28,36 +29,24 @@ class NoteScreenViewModel @Inject constructor(
     fun getNotes() {
         viewModelScope.launch {
 
-            noteUseCases.GetNotes.invoke()
-                .map{ NoteState(it) }
+            noteUseCases.getNotes.invoke()
+                .map { NoteScreenUiState(it) }
                 .collect {
                     _notesState.value = it
                 }
         }
     }
 
-
-    fun addNote(note: Note) {
-        viewModelScope.launch {
-            noteUseCases.AddNote.invoke(note)
-        }
+    fun setSelectedNote(note: Note) {
+        _notesState.value = _notesState.value.copy(note = note)
     }
 
-    fun updateNote(note: Note) {
-        viewModelScope.launch {
-            noteUseCases.UpdateNote.invoke(note)
-        }
-    }
 
     fun deleteNote(note: Note) {
         viewModelScope.launch {
-            noteUseCases.DeleteNote.invoke(note)
+            noteUseCases.deleteNote.invoke(note)
         }
     }
-
-
-
-
 
 
 }

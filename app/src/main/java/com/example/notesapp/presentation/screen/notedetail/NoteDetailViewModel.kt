@@ -1,4 +1,4 @@
-package com.example.notesapp.presentation.Screen.NoteDetailScreen
+package com.example.notesapp.presentation.screen.notedetail
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -17,8 +17,8 @@ class NoteDetailViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ): ViewModel() {
 
-    private val _state = MutableStateFlow(NotesDetailState())
-    val state: StateFlow<NotesDetailState> = _state.asStateFlow()
+    private val _state = MutableStateFlow(NoteDetailUiState())
+    val state: StateFlow<NoteDetailUiState> = _state.asStateFlow()
 
     init {
         val noteId = savedStateHandle.get<Int>("noteId") ?: -1
@@ -30,7 +30,7 @@ class NoteDetailViewModel @Inject constructor(
 
     fun loadNoteById(noteId:Int){
         viewModelScope.launch {
-            val note=useCases.GetNoteId(noteId)
+            val note=useCases.getNoteId(noteId)
             _state.value=state.value.copy(note = note)
         }
     }

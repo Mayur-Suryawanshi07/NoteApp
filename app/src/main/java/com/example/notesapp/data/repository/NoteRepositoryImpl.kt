@@ -12,7 +12,7 @@ class NoteRepositoryImpl(
     private val dao: NoteDao
 ): NoteRepository {
     override fun getNotes(): Flow<List<Note>> {
-        return dao.getAllNotes().map { it.map{it.toNote()}}
+        return dao.getAllNotes().map { it.map{ it -> it.toNote()}}
     }
 
     override suspend fun getNoteById(id: Int): Note? {

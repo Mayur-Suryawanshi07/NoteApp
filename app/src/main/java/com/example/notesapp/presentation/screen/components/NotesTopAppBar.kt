@@ -1,9 +1,9 @@
-package com.example.notesapp.presentation.Screen.components
+package com.example.notesapp.presentation.screen.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -13,14 +13,13 @@ import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun notesTopAppBar(
+fun NotesTopAppBar(
     title: String,
-    subTitile:String?=null,
+    subTitle:String?=null,
     showNavigationIcon: Boolean = false,
     backNavigationIcon:(() -> Unit)? = null,
     action: @Composable (RowScope.() -> Unit)? = null,
@@ -35,7 +34,7 @@ fun notesTopAppBar(
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold
                 )
-                Text(text = subTitile?:"", fontSize = 16.sp,fontStyle = FontStyle.Italic)
+                Text(text = subTitle?:"", fontSize = 16.sp,fontStyle = FontStyle.Italic)
             }
         },
 
@@ -46,7 +45,7 @@ fun notesTopAppBar(
                         backNavigationIcon()
                     }
                 ) {
-                    Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null)
+                    Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
                 }
             }else null
         },

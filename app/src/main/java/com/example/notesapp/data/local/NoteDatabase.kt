@@ -6,7 +6,7 @@ import androidx.room.TypeConverters
 
 @Database(
     entities = [NoteDto::class],
-    version = 3,
+    version = 1,
     exportSchema = false
 )
 
@@ -14,9 +14,5 @@ import androidx.room.TypeConverters
 abstract class NoteDatabase : RoomDatabase() {
 
     abstract fun getNoteDao(): NoteDao
-
-    companion object {
-        private const val DB_Name="note_db"
-    }
 
 }

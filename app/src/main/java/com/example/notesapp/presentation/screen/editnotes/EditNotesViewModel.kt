@@ -1,5 +1,4 @@
-package com.example.notesapp.presentation.Screen.EditNoteScreen
-
+package com.example.notesapp.presentation.screen.editnotes
 
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
@@ -13,20 +12,19 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 import dagger.hilt.android.lifecycle.HiltViewModel
 
-
 @HiltViewModel
-class EditScreenViewModel @Inject constructor(
+class EditNotesViewModel @Inject constructor(
     private val noteUseCases: NoteUseCases
 ): ViewModel(){
 
-    private val _uiState = MutableStateFlow(EditScreenUiState())
-    val uiState: StateFlow<EditScreenUiState> = _uiState.asStateFlow()
+    private val _uiState = MutableStateFlow(EditNotesUiState())
+    val uiState: StateFlow<EditNotesUiState> = _uiState.asStateFlow()
 
     fun loadNote(noteId: Int?) {
         if (noteId == null || noteId == -1) return
         _uiState.value = _uiState.value.copy(isLoading = true)
         viewModelScope.launch {
-            val note = noteUseCases.GetNoteId.invoke(noteId)
+            val note = noteUseCases.getNoteId.invoke(noteId)
             if (note != null) {
                 _uiState.value = _uiState.value.copy(
                     noteId = note.id,
@@ -61,7 +59,7 @@ class EditScreenViewModel @Inject constructor(
             return
         }
         viewModelScope.launch {
-            noteUseCases.AddNote.invoke(
+            noteUseCases.addNote.invoke(
                 com.example.notesapp.domain.model.Note(
                     id = if (state.noteId == null || state.noteId == -1) null else state.noteId,
                     title = state.title,

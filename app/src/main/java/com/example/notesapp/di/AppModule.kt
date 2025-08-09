@@ -29,8 +29,7 @@ object AppModule {
                 app,
                 NoteDatabase::class.java,
                 "note_db"
-            ).fallbackToDestructiveMigration(true)
-            .build()
+            ).build()
 
     }
 
@@ -51,11 +50,11 @@ object AppModule {
     @Singleton
     fun provideNoteUseCases(repository: NoteRepository): NoteUseCases {
         return NoteUseCases(
-            GetNotes = GetNotesUseCase(repository),
-            GetNoteId =  GetNoteIdUseCase(repository),
-            AddNote = InsertNoteUseCase(repository),
-            DeleteNote = DeleteNoteUseCAse(repository),
-            UpdateNote = UpdateNoteUseCase(repository)
+            getNotes = GetNotesUseCase(repository),
+            getNoteId =  GetNoteIdUseCase(repository),
+            addNote = InsertNoteUseCase(repository),
+            deleteNote = DeleteNoteUseCAse(repository),
+            updateNote = UpdateNoteUseCase(repository)
         )
     }
 

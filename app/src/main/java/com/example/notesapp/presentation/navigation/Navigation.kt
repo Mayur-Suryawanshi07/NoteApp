@@ -7,21 +7,21 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.notesapp.presentation.Screen.EditNoteScreen.AddNoteScreen
-import com.example.notesapp.presentation.Screen.NoteDetailScreen.NoteDetailScreen
-import com.example.notesapp.presentation.Screen.NoteScreen.NoteScreenViewModel
-import com.example.notesapp.presentation.Screen.NoteScreen.NotesListScreen
+import com.example.notesapp.presentation.screen.editnotes.EditNotesScreen
+import com.example.notesapp.presentation.screen.notedetail.NoteDetailScreen
+import com.example.notesapp.presentation.screen.notescreen.NoteScreenViewModel
+import com.example.notesapp.presentation.screen.notescreen.NoteScreen
 
 
 @Composable
-fun NoteApp( viewModel: NoteScreenViewModel,isDarkMode: MutableState<Boolean>) {
+fun Navigation(viewModel: NoteScreenViewModel, isDarkMode: MutableState<Boolean>) {
 
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = Routes.NoteScreen.route) {
         //Note Screen
         composable(route = Routes.NoteScreen.route) {
-            NotesListScreen(
+            NoteScreen(
                 navigation = navController,
                 viewModel = viewModel,
                 isDarkmode = isDarkMode
@@ -39,7 +39,7 @@ fun NoteApp( viewModel: NoteScreenViewModel,isDarkMode: MutableState<Boolean>) {
         ) {
             val noteId = it.arguments?.getInt("noteId")?: -1
 
-            AddNoteScreen(
+            EditNotesScreen(
                 noteID = noteId,
                 navigation = navController,
             )

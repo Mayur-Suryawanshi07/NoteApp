@@ -12,7 +12,7 @@ class Converters {
         return time.toString()
     }
     @TypeConverter
-    fun StringToTime(string: String): LocalDateTime {
+    fun stringToTime(string: String): LocalDateTime {
         return LocalDateTime.parse(string)
     }
 

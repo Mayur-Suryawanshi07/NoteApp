@@ -1,6 +1,5 @@
-package com.example.notesapp.presentation.Screen.NoteScreen
+package com.example.notesapp.presentation.screen.notescreen
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -34,13 +33,13 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.notesapp.R
-import com.example.notesapp.presentation.Screen.components.notesTopAppBar
+import com.example.notesapp.presentation.screen.components.NotesTopAppBar
 import com.example.notesapp.presentation.navigation.Routes
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NotesListScreen(
+fun NoteScreen(
     navigation: NavHostController,
     viewModel: NoteScreenViewModel = hiltViewModel(),
     isDarkmode : MutableState<Boolean>
@@ -52,9 +51,9 @@ fun NotesListScreen(
          //to connect the scroll behaviour to the scaffold or to the lazyContent
          modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
          topBar = {
-            notesTopAppBar(
+            NotesTopAppBar(
                 title = "My notes",
-                subTitile = "Create Your Notes",
+                subTitle = "Create Your Notes",
                 scrollBehaviour =scrollBehavior,
                 action = {
                     IconButton(
@@ -115,7 +114,7 @@ fun NotesListScreen(
                 modifier = Modifier.padding(padding),
             ) {
                 items(state.notes) { note ->
-                    NoteCard(
+                    NoteScreenCard(
                         note = note,
                         onClick = {
                                   navigation.navigate(Routes.EditNoteScreen.passArg(note.id ?: -1))
