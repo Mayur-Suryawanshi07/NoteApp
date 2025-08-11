@@ -46,29 +46,14 @@ Organize your thoughts effortlessly with a modern UI and smooth user experience.
     <th>Note Screen (Light)</th>
   </tr>
   <tr>
-    <td><img src="screenshots/EditScreen(DarkMode).jpg" width="200"></td>
     <td><img src="screenshots/EditScreen(LightMode).jpg" width="200"></td>
-    <td><img src="screenshots/NoteDetailScreen(Dark_Mode).jpg" width="200"></td>
+    <td><img src="screenshots/EditScreen(DarkMode).jpg" width="200"></td>
     <td><img src="screenshots/NoteDetailScreen(Light_Mode).jpg" width="200"></td>
-    <td><img src="screenshots/NoteScreen(DarkMode).jpg" width="200"></td>
+    <td><img src="screenshots/NoteDetailScreen(Dark_Mode).jpg" width="200"></td>
     <td><img src="screenshots/NoteScreen(Light_Mode).jpg" width="200"></td>
+    <td><img src="screenshots/NoteScreen(DarkMode).jpg" width="200"></td>
   </tr>
 </table>
-
-
-| **Edit Screen (Dark Mode)** | **Edit Screen (Light Mode)** |
-|-----------------------------|------------------------------|
-| ![Edit Dark](screenshots/EditScreen(DarkMode).jpg) | ![Edit Light](screenshots/EditScreen(LightMode).jpg) |
-
-| **Note Detail Screen (Dark Mode)** | **Note Detail Screen (Light Mode)** |
-|------------------------------------|--------------------------------------|
-| ![Detail Dark](screenshots/NoteDetailScreen(Dark_Mode).jpg) | ![Detail Light](screenshots/NoteDetailScreen(Light_Mode).jpg) |
-
-| **Note Screen (Dark Mode)** | **Note Screen (Light Mode)** |
-|-----------------------------|------------------------------|
-| ![Note Dark](screenshots/NoteScreen(DarkMode).jpg) | ![Note Light](screenshots/NoteScreen(Light_Mode).jpg) |
-
-> All screenshots are stored in the `screenshots/` folder in the root directory.
 
 ---
 
@@ -78,4 +63,21 @@ Organize your thoughts effortlessly with a modern UI and smooth user experience.
    git clone https://github.com/yourusername/NoteApp.git
 
 ---
+Open the project in Android Studio
+
+Go to File > Open
+
+Select the cloned project folder.
+
+Sync Gradle
+
+Android Studio will prompt you to sync Gradle files.
+
+Click "Sync Now".
+
+Run the app
+
+Connect an Android device or start an emulator.
+
+Click the Run ▶️ button in Android Studio.
 
