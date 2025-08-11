@@ -28,11 +28,6 @@ Organize your thoughts effortlessly with a modern UI and smooth user experience.
 
 ---
 
-
----
-
-## 📸 Screenshots
-
 ## 📸 Screenshots
 
 <table align="center">
@@ -55,6 +50,8 @@ Organize your thoughts effortlessly with a modern UI and smooth user experience.
 </table>
 
 ---
+## 📥 Download
+You can [download the latest APK here](https://github.com/your-username/NoteApp/releases) and install it on your Android device.
 
 ## 📦 Setup & Installation
 1. **Clone the repository**  
@@ -87,5 +84,19 @@ Organize your thoughts effortlessly with a modern UI and smooth user experience.
 - **Hilt** – Dependency Injection  
 - **Material 3** – UI Components  
 - **Retrofit** – Networking  
+
+## 📂 Project Structure
+
+NoteApp/
+ ├── app/                   # Main Android application
+ │   ├── data/               # Repository, database, API
+ │   ├── domain/             # Use cases, models
+ │   ├── presentation/       # UI (Jetpack Compose screens)
+ │   └── di/                 # Hilt dependency injection
+ ├── screenshots/           # App screenshots
+ └── build.gradle
+
+ ## 📜 License
+This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
 
 
