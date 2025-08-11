@@ -34,6 +34,28 @@ Organize your thoughts effortlessly with a modern UI and smooth user experience.
 
 ## 📸 Screenshots
 
+## 📸 Screenshots
+
+<table align="center">
+  <tr>
+    <th>Edit Screen (Dark)</th>
+    <th>Edit Screen (Light)</th>
+    <th>Detail Screen (Dark)</th>
+    <th>Detail Screen (Light)</th>
+    <th>Note Screen (Dark)</th>
+    <th>Note Screen (Light)</th>
+  </tr>
+  <tr>
+    <td><img src="screenshots/EditScreen(DarkMode).jpg" width="200"></td>
+    <td><img src="screenshots/EditScreen(LightMode).jpg" width="200"></td>
+    <td><img src="screenshots/NoteDetailScreen(Dark_Mode).jpg" width="200"></td>
+    <td><img src="screenshots/NoteDetailScreen(Light_Mode).jpg" width="200"></td>
+    <td><img src="screenshots/NoteScreen(DarkMode).jpg" width="200"></td>
+    <td><img src="screenshots/NoteScreen(Light_Mode).jpg" width="200"></td>
+  </tr>
+</table>
+
+
 | **Edit Screen (Dark Mode)** | **Edit Screen (Light Mode)** |
 |-----------------------------|------------------------------|
 | ![Edit Dark](screenshots/EditScreen(DarkMode).jpg) | ![Edit Light](screenshots/EditScreen(LightMode).jpg) |
