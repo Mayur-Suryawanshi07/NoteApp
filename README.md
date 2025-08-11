@@ -33,7 +33,7 @@ Organize your thoughts effortlessly with a modern UI and smooth user experience.
 
 | Home Screen | Add/Edit Note | Note Details | Dark Mode |  
 |-------------|--------------|--------------|-----------|  
-| ![Home](screenshots/NoteScreen(Light_Mode).png) | ![Add Note](screenshots/add_note.png) | ![Details](screenshots/details.png) | ![Dark Mode](screenshots/dark_mode.png) |  
+| ![Home](app/screenshots/NoteScreen(Light_Mode).png) | ![Add Note](screenshots/add_note.png) | ![Details](screenshots/details.png) | ![Dark Mode](screenshots/dark_mode.png) |  
 
 > Place your screenshots in a `screenshots` folder inside the project root.  
 
