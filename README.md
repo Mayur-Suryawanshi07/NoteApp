@@ -60,7 +60,7 @@ Organize your thoughts effortlessly with a modern UI and smooth user experience.
 ## 📦 Setup & Installation
 1. **Clone the repository**  
    ```bash
-   git clone https://github.com/yourusername/NoteApp.git
+   git clone https://github.com/Mayur-Suryawanshi07/NoteApp.git
 
 2. **Open the project in Android Studio**  
    - Go to **File > Open**  
