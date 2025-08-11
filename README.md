@@ -12,9 +12,8 @@ Organize your thoughts effortlessly with a modern UI and smooth user experience.
 ## ✨ Features  
 - 📝 Create, edit, and delete notes  
 - 🎨 Assign custom colors to notes  
-- 🔍 Search & filter notes easily  
-- 📅 Auto-save with timestamps  
-- 💾 Offline-first storage with Room  
+- 📅 save with timestamps  
+- 💾 Offline storage with Room  
 - 🖥 Built on **Clean Architecture + MVVM**  
 
 ---
@@ -75,4 +74,11 @@ Organize your thoughts effortlessly with a modern UI and smooth user experience.
    - Click the **Run ▶️** button in Android Studio.
 
 
+| 🛠 **Requirements**            | 📦 **Dependencies**                  |
+|--------------------------------|---------------------------------------|
+| Android Studio Hedgehog+       | Jetpack Compose – Modern UI toolkit   |
+| Java 17+                       | Room Database – Local storage         |
+| Android SDK 24+                | Hilt – Dependency Injection           |
+| Internet connection (for API)  | Material 3 – UI Components            |
+|                                | Retrofit – Networking                 |
 
