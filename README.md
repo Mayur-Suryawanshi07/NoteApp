@@ -29,18 +29,31 @@ Organize your thoughts effortlessly with a modern UI and smooth user experience.
 
 ---
 
-## 📷 Screenshots  
-
-| Home Screen | Add/Edit Note | Note Details | Dark Mode |  
-|-------------|--------------|--------------|-----------|  
-| ![Home](app/screenshots/NoteScreen(Light_Mode).png) | ![Add Note](screenshots/add_note.png) | ![Details](screenshots/details.png) | ![Dark Mode](screenshots/dark_mode.png) |  
-
-> Place your screenshots in a `screenshots` folder inside the project root.  
 
 ---
 
-## 🚀 Getting Started  
+## 📸 Screenshots
 
-### 1️⃣ Clone the repository  
-```bash
-git clone https://github.com/yourusername/NoteApp.git
+| **Edit Screen (Dark Mode)** | **Edit Screen (Light Mode)** |
+|-----------------------------|------------------------------|
+| ![Edit Dark](screenshots/EditScreen(DarkMode).jpg) | ![Edit Light](screenshots/EditScreen(LightMode).jpg) |
+
+| **Note Detail Screen (Dark Mode)** | **Note Detail Screen (Light Mode)** |
+|------------------------------------|--------------------------------------|
+| ![Detail Dark](screenshots/NoteDetailScreen(Dark_Mode).jpg) | ![Detail Light](screenshots/NoteDetailScreen(Light_Mode).jpg) |
+
+| **Note Screen (Dark Mode)** | **Note Screen (Light Mode)** |
+|-----------------------------|------------------------------|
+| ![Note Dark](screenshots/NoteScreen(DarkMode).jpg) | ![Note Light](screenshots/NoteScreen(Light_Mode).jpg) |
+
+> All screenshots are stored in the `screenshots/` folder in the root directory.
+
+---
+
+## 📦 Setup & Installation
+1. Clone the repository  
+   ```bash
+   git clone https://github.com/yourusername/NoteApp.git
+
+---
+
