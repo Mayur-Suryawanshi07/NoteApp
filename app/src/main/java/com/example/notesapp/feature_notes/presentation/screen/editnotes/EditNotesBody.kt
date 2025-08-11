@@ -125,7 +125,7 @@ fun EditNotesBody(
                 edtViewModel.onContentChange(it)
             },
             textStyle = TextStyle(
-                fontSize = 16.sp,
+                fontSize = 18.sp,
                 color = Color.DarkGray
             ),
             modifier = Modifier
@@ -134,7 +134,8 @@ fun EditNotesBody(
             placeholder = {
                 Text(
                     text = "Enter note content...",
-                    color = Color.DarkGray
+                    color = Color.DarkGray,
+                    fontSize = 18.sp
                 )
             },
             colors = OutlinedTextFieldDefaults.colors(
