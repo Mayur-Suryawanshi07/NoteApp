@@ -58,20 +58,21 @@ Organize your thoughts effortlessly with a modern UI and smooth user experience.
 ---
 
 ## 📦 Setup & Installation
-1. Clone the repository  
+1. **Clone the repository**  
    ```bash
    git clone https://github.com/yourusername/NoteApp.git
-   
-2.Open the project in Android Studio
-  Go to File > Open
-  Select the cloned project folder.
-  
-3.Sync Gradle
-  Android Studio will prompt you to sync Gradle files.
-  Click "Sync Now".
-  
-4.Run the app
-  Connect an Android device or start an emulator.
-  Click the Run ▶️ button in Android Studio.
+
+2. **Open the project in Android Studio**  
+   - Go to **File > Open**  
+   - Select the cloned project folder.
+
+3. **Sync Gradle**  
+   - Android Studio will prompt you to sync Gradle files.  
+   - Click **"Sync Now"**.
+
+4. **Run the app**  
+   - Connect an Android device or start an emulator.  
+   - Click the **Run ▶️** button in Android Studio.
+
 
 
