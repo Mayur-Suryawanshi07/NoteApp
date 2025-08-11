@@ -40,12 +40,12 @@ Organize your thoughts effortlessly with a modern UI and smooth user experience.
     <th>Note Screen (Light)</th>
   </tr>
   <tr>
+    <td><img src="screenshots/NoteScreen(Light_Mode).jpg" width="200"></td>
+    <td><img src="screenshots/NoteScreen(DarkMode).jpg" width="200"></td>
     <td><img src="screenshots/EditScreen(LightMode).jpg" width="200"></td>
     <td><img src="screenshots/EditScreen(DarkMode).jpg" width="200"></td>
     <td><img src="screenshots/NoteDetailScreen(Light_Mode).jpg" width="200"></td>
     <td><img src="screenshots/NoteDetailScreen(Dark_Mode).jpg" width="200"></td>
-    <td><img src="screenshots/NoteScreen(Light_Mode).jpg" width="200"></td>
-    <td><img src="screenshots/NoteScreen(DarkMode).jpg" width="200"></td>
   </tr>
 </table>
 
