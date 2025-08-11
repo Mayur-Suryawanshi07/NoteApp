@@ -128,12 +128,6 @@ fun EditNotesBody(
                 fontSize = 16.sp,
                 color = Color.DarkGray
             ),
-            colors = OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = animatedBackgroundColor,
-                focusedLabelColor = animatedBackgroundColor,
-                unfocusedBorderColor = animatedBackgroundColor,
-                cursorColor = Color.Black
-            ),
             modifier = Modifier
                 .fillMaxSize()
                 .focusRequester(contentFocusRequester),
@@ -142,7 +136,13 @@ fun EditNotesBody(
                     text = "Enter note content...",
                     color = Color.DarkGray
                 )
-            }
+            },
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedBorderColor = animatedBackgroundColor,
+                focusedLabelColor = animatedBackgroundColor,
+                unfocusedBorderColor = animatedBackgroundColor,
+                cursorColor = Color.Black
+            ),
         )
     }
 }

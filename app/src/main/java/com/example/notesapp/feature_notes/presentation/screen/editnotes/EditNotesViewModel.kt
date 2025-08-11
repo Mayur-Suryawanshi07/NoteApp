@@ -56,7 +56,7 @@ class EditNotesViewModel @Inject constructor(
     fun saveNote() {
         val state = _uiState.value
         if (state.title.isBlank() || state.content.isBlank()) {
-            _uiState.value = state.copy(error = "Note can't be empty!")
+            _uiState.value = state.copy(error = "Note Title and Content can't be empty!")
             return
         }
         viewModelScope.launch {
