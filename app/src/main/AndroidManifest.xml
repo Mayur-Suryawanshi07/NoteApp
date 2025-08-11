@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NoteAppAi">
         <activity
-            android:name=".MainActivity"
+            android:name=".feature_notes.presentation.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.NoteAppAi">
             <intent-filter>

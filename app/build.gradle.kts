@@ -92,4 +92,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.coroutines.core)
 
+    // DataStore for persisting theme preference
+    implementation(libs.androidx.datastore.preferences)
+
 }
