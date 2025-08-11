@@ -85,18 +85,5 @@ You can [download the latest APK here](https://github.com/your-username/NoteApp/
 - **Material 3** – UI Components  
 - **Retrofit** – Networking  
 
-## 📂 Project Structure
-
-NoteApp/
-├── app/ # Main Android application source
-│ ├── data/ # Data layer: Repository, database, API calls
-│ ├── domain/ # Domain layer: Use cases, models
-│ ├── presentation/ # Presentation layer: Jetpack Compose UI screens
-│ └── di/ # Dependency Injection setup (Hilt)
-├── screenshots/ # App screenshots for README
-└── build.gradle # Project-level Gradle configuration
-
  ## 📜 License
 This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
-
-
