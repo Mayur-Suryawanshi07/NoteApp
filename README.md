@@ -51,7 +51,7 @@ Organize your thoughts effortlessly with a modern UI and smooth user experience.
 
 ---
 ## 📥 Download
-You can [download the Demo APK]() and install it on your Android device.
+You can [download the Demo APK](https://github.com/Mayur-Suryawanshi07/NoteApp/releases/tag/v1.0.0) and install it on your Android device.
 
 ## 📦 Setup & Installation
 1. **Clone the repository**  
