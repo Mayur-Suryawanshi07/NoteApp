@@ -72,13 +72,20 @@ Organize your thoughts effortlessly with a modern UI and smooth user experience.
 4. **Run the app**  
    - Connect an Android device or start an emulator.  
    - Click the **Run ▶️** button in Android Studio.
+     
+  ---
 
+## 🛠 Requirements
+- **Android Studio** Hedgehog or newer  
+- **Java** 17 or higher  
+- **Android SDK** 24+  
+- Internet connection for API calls  
 
-| 🛠 **Requirements**            | 📦 **Dependencies**                  |
-|--------------------------------|---------------------------------------|
-| Android Studio Hedgehog+       | Jetpack Compose – Modern UI toolkit   |
-| Java 17+                       | Room Database – Local storage         |
-| Android SDK 24+                | Hilt – Dependency Injection           |
-| Internet connection (for API)  | Material 3 – UI Components            |
-|                                | Retrofit – Networking                 |
+## 📦 Dependencies
+- **Jetpack Compose** – Modern UI toolkit  
+- **Room Database** – Local storage  
+- **Hilt** – Dependency Injection  
+- **Material 3** – UI Components  
+- **Retrofit** – Networking  
+
 
