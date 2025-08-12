@@ -14,7 +14,7 @@
         <activity
             android:name=".feature_notes.presentation.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.NoteAppAi">
+            android:theme="@style/Theme.NoteAppAi.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

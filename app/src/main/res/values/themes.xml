@@ -2,4 +2,12 @@
 <resources>
 
     <style name="Theme.NoteAppAi" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <!-- Splash screen theme for Android 12+ (uses SplashScreen API attributes) -->
+    <style name="Theme.NoteAppAi.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/backGround_colour</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splashscreen_icon</item>
+        <item name="postSplashScreenTheme">@style/Theme.NoteAppAi</item>
+    </style>
+
 </resources>
