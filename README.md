@@ -55,7 +55,6 @@ You can [download the Demo APK](https://github.com/Mayur-Suryawanshi07/NoteApp/r
 ---
 ## 📂 Project Structure
 
-```plaintext
 kotlin+java
 └── com.example.notesapp
     ├── feature_notes
