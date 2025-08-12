@@ -56,34 +56,27 @@ You can [download the Demo APK](https://github.com/Mayur-Suryawanshi07/NoteApp/r
 ## 📂 Project Structure
 
 ```plaintext
-kotlin+java
-└── com.example.notesapp
-    ├── feature_notes
-    │   ├── data
-    │   │   ├── local
-    │   │   │   
-    │   │   ├── mapper
-    │   │   │   
-    │   │   ├── repository
-    │   │   │  
-    │   ├── di
-    │   │   └── AppModule.kt
-    │
-    │   ├── domain
-    │   │   ├── model
-    │   │   ├── repository
-    │   │   └── use_cases
-    │
-    │   └── presentation
-    │       ├── navigation
-    │       ├── screen
-    │       └── utils
-    │
-    ├── ui.theme
-    │
-    ├── BaseApplication.kt
-    ├── MainActivity.kt
-    └── NoteApp.kt
+com.example.notesapp
+│
+├── feature_notes
+│   ├── data
+│   │   ├── local/         
+│   │   ├── remote/         
+│   │   ├── mapper/         
+│   │   └── repository/     
+│   │
+│   ├── di/               
+│   │
+│   ├── domain
+│   │   ├── model/         
+│   │   ├── repository/     
+│   │   └── usecase/       
+│
+│   └── presentation
+│       ├── navigation/     
+│       ├── screen/       
+│       ├── component/    
+│       └── viewmodel/    
 ```
 ---
 
