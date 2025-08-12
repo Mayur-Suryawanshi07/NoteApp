@@ -1,6 +1,6 @@
 # 📒 NoteApp  
 
-[![Kotlin](https://img.shields.io/?logo=kotlin)](https://kotlinlang.org/)  
+[![Kotlin](https://img.shields.io/badge/Kotlin-1.9-blue.svg?logo=kotlin)](https://kotlinlang.org/)  
 [![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-Material%203-blueviolet.svg?logo=jetpackcompose)](https://developer.android.com/jetpack/compose)  
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)  
 
@@ -52,6 +52,44 @@ Organize your thoughts effortlessly with a modern UI and smooth user experience.
 ---
 ## 📥 Download
 You can [download the Demo APK](https://github.com/Mayur-Suryawanshi07/NoteApp/releases/download/v1.0.0/NoteApp.apk) and install it on your Android device.
+---
+## 📂 Project Structure
+
+```plaintext
+kotlin+java
+└── com.example.notesapp
+    ├── feature_notes
+    │   ├── data
+    │   │   ├── local
+    │   │   │   ├── dao
+    │   │   │   │   └── NoteDao.kt
+    │   │   │   ├── entity
+    │   │   │   │   ├── NoteDto.kt
+    │   │   │   │   ├── Converters.kt
+    │   │   │   │   └── NoteDatabase.kt
+    │   │   ├── mapper
+    │   │   │   └── Mappers.kt
+    │   │   ├── repository
+    │   │   │   └── NoteRepositoryImpl.kt
+    │   ├── di
+    │   │   └── AppModule.kt
+    │
+    │   ├── domain
+    │   │   ├── model
+    │   │   ├── repository
+    │   │   └── use_cases
+    │
+    │   └── presentation
+    │       ├── navigation
+    │       ├── screen
+    │       └── utils
+    │
+    ├── ui.theme
+    │
+    ├── BaseApplication.kt
+    ├── MainActivity.kt
+    └── NoteApp.kt
+---
 
 ## 📦 Setup & Installation
 1. **Clone the repository**  
