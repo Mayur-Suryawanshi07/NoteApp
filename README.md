@@ -52,6 +52,33 @@ Organize your thoughts effortlessly with a modern UI and smooth user experience.
 ---
 ## 📥 Download
 You can [download the Demo APK](https://github.com/Mayur-Suryawanshi07/NoteApp/releases/download/v1.0.0/NoteApp.apk) and install it on your Android device.
+---
+## 📂 Project Structure
+
+```plaintext
+com.example.notesapp
+│
+├── feature_notes
+│   ├── data
+│   │   ├── local/         
+│   │   ├── remote/         
+│   │   ├── mapper/         
+│   │   └── repository/     
+│   │
+│   ├── di/               
+│   │
+│   ├── domain
+│   │   ├── model/         
+│   │   ├── repository/     
+│   │   └── usecase/       
+│
+│   └── presentation
+│       ├── navigation/     
+│       ├── screen/       
+│       ├── component/    
+│       └── viewmodel/    
+```
+---
 
 ## 📦 Setup & Installation
 1. **Clone the repository**  
