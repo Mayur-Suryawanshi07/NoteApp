@@ -20,7 +20,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
+object DataBaseModule {
 
     @Provides
     @Singleton
@@ -57,6 +57,4 @@ object AppModule {
             updateNote = UpdateNoteUseCase(repository)
         )
     }
-
 }
-//all the singleton implementation is happen here

@@ -8,7 +8,7 @@ fun NoteDto.toNote(): Note {
         id = id,
         title = title,
         content = content,
-        color = color, // already ARGB Int
+        color = color,
         timestamp = timestamp
     )
 }
@@ -18,7 +18,7 @@ fun Note.toNoteDto(): NoteDto {
         id = id,
         title = title,
         content = content,
-        color = color, // ARGB Int for DB
+        color = color,
         timestamp = timestamp
     )
 }

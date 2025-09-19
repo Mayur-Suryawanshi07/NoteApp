@@ -31,7 +31,4 @@ class NoteRepositoryImpl(
     override suspend fun updateNote(note: Note) {
         return dao.updateNote(note.toNoteDto())
     }
-
-
-
 }
